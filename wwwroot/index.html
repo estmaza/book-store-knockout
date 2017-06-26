@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Books Store</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js" async data-main="src/js/main"></script>
+</head>
+
+<body class="container-fluid">
+
+    <div class="header text-center">
+        <h1 data-bind="text: title"></h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <button data-bind="click: add" class="btn btn-default pull-right">Add Book</button>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</td>
+                <th>Name</td>
+                <th>Authors</td>
+                <th>Publish Date</td>
+                <th>Rating</td>
+                <th>Pages</td>
+                <th></td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: books" class="form-group">
+            <td><span data-bind="text: id"></span></td>
+            <td><input type="text" data-bind="textInput: name" class="form-control" placeholder="Enter book name..."></td>
+            <td>
+                <select class="selectpicker" multiple data-bind="options: $root.authors, optionsText: 'fullName', optionsValue: 'id', selectedOptions: authors"></select>
+            </td>
+            <td><input type="text" data-bind="textInput: publishDate" class="form-control datepicker"></td>
+            <td><input type="number" data-bind="textInput: rating" min="0" max="10" class="form-control"></td>
+            <td><input type="number" data-bind="textInput: pages" min="0" class="form-control"></td>
+            <td class="form-inline">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button data-bind="click: $parent.save, enable: name.isDirty() || authors.isDirty() || publishDate.isDirty() || rating.isDirty() || pages.isDirty()" class="btn btn-default">Save</button>
+                    <button data-bind="click: $parent.remove" class="btn btn-default">Delete</button>
+                </div>
+            </td>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <hr />
+            <button onclick="localStorage.clear();" class="btn btn-default">Clear localStorage...</button>
+            <span> * refresh browser to reset data</span><br /><br />
+            <button onclick="console.log(app.service.get());" class="btn btn-default">Explore LocalStorage data</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
