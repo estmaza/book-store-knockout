@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
 
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,19 +13,15 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js" async data-main="src/js/main"></script>
 </head>
-
 <body class="container-fluid">
-
     <div class="header text-center">
         <h1 data-bind="text: title"></h1>
     </div>
-
     <div class="row">
         <div class="col-sm-12 form-group">
             <button data-bind="click: add" class="btn btn-default pull-right">Add Book</button>
         </div>
     </div>
-
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -55,7 +51,6 @@
             </td>
         </tbody>
     </table>
-
     <div class="row">
         <div class="col-sm-12 form-group">
             <hr />
@@ -64,7 +59,5 @@
             <button onclick="console.log(app.service.get());" class="btn btn-default">Explore LocalStorage data</button>
         </div>
     </div>
-
 </body>
-
 </html>
